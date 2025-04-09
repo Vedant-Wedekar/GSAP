@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Moves Div - GSAP ScrollTrigger</title>
+  <style>
+    body {
+      margin: 0;
+      height: 200vh;
+      background: #e0e0e0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: dodgerblue;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // gsap.from(".box", {
+    //     x:100,
+    //     duration:2,
+
+    // })
+    gsap.to(".box", {
+      x: 500, // move horizontally
+      duration : 2,
+      scrollTrigger: {
+        trigger: ".box",
+        start: "top center", // when .box hits center of viewport
+        end: "bottom top",   // when .box leaves the viewport
+        scrub: true,         // this links the scroll to the animation
+      }
+    });
+  </script>
+
+</body>
+</html>
